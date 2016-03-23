@@ -1,5 +1,8 @@
 # Simple wrapper for intl-tel-input
+##### https://github.com/jackocnr/intl-tel-input
+-------------------
 
+Examples:
 ```js
 var wrapper = new IntlTelInputWrapper('#msisdn_field').init({
   preferredCountries: ['no', 'se'],
