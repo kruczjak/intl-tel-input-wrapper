@@ -1,0 +1,21 @@
+{
+  "name": "intl-tel-input-wrapper",
+  "homepage": "https://github.com/kruczjak/intl-tel-input-wrapper",
+  "authors": [
+    "kruczjak <kruczjak@gmail.com>"
+  ],
+  "description": "Wrapper for intl-tel-input.",
+  "main": "./src/js/intl_tel_input_wrapper.js",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "intl-tel-input": "^8.4.8"
+  }
+}
