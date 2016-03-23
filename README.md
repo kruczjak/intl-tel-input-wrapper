@@ -16,7 +16,7 @@ wrapper.changeCountry('no');
 wrapper.changeCountry('47');
 
 //check validity
-wrapper.isValid();
+wrapper.isValid(); // -> true/false
 
 //get full number
 wrapper.fullNumber(); // -> '+47xxxxxxxx'
