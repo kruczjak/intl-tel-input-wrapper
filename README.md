@@ -21,4 +21,7 @@ wrapper.isValid(); // -> true/false
 //get full number
 wrapper.fullNumber(); // -> '+47xxxxxxxx'
 wrapper.fullNumber(true); // -> '47xxxxxxxx'
+
+//get field
+wrapper.getField();
 ```

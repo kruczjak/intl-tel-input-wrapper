@@ -55,3 +55,5 @@ IntlTelInputWrapper.prototype.isValid = function()  {
 IntlTelInputWrapper.prototype.fullNumber = function(remove_plus) {
   return remove_plus ? this.field.intlTelInput("getNumber").substr(1) : this.field.intlTelInput("getNumber");
 };
+
+IntlTelInputWrapper.prototype.getField = function()  { return this.field };
