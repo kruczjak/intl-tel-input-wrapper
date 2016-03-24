@@ -10,7 +10,7 @@ var wrapper = new IntlTelInputWrapper('#msisdn_field').init({
   initialCountry: 'pl'
 });
 
-
+//or use field selected earlier with jQuery
 var field = $('#msisdn_field');
 new IntlTelInputWrapper().initWithJQuery(field);
 
