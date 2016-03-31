@@ -35,7 +35,7 @@ IntlTelInputWrapper.prototype.initWithJQuery = function(field, settings) {
 };
 
 IntlTelInputWrapper.prototype.changeCountry = function(country_string)  {
-  if (country_string == null) return;
+  if (!country_string) return;
 
   if (country_string[0] <= '9' && country_string[0] >= '0') {
     var country = $.grep(this.countryData, function (e) {
