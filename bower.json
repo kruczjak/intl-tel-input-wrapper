@@ -5,7 +5,9 @@
     "kruczjak <kruczjak@gmail.com>"
   ],
   "description": "Wrapper for intl-tel-input.",
-  "main": "./src/js/intl_tel_input_wrapper.js",
+  "main": [
+    "./src/js/intl_tel_input_wrapper.js"
+  ],
   "moduleType": [],
   "license": "MIT",
   "ignore": [
