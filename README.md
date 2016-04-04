@@ -27,4 +27,12 @@ wrapper.fullNumber(true); // -> '47xxxxxxxx'
 
 //get field
 wrapper.getField();
+
+//onChange validations classes and callbacks
+new IntlTelInputWrapper('#msisdn_field').init({
+  errorValidationAddClass: 'error-class', //adds 'error-class' to '#msisdn_field'
+  successValidationAddClass: 'success-class', //adds 'success-class' to '#msisdn_field'
+  errorValidationCallback: function(e) {}, //calls function when validation error
+  successValidationCallback: function(e) {} //calls function when validation success
+});
 ```

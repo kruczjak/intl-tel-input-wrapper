@@ -2,6 +2,7 @@ var IntlTelInputWrapper = window.IntlTelInputWrapper = function(fieldId, formId)
   this.countryData = $.fn.intlTelInput.getCountryData();
   if (fieldId) this.field = $(fieldId);
   this.formId = formId;
+  this.onChangeSet = false;
 
   this.formCallback = function()  {
     var self = this;
@@ -11,7 +12,48 @@ var IntlTelInputWrapper = window.IntlTelInputWrapper = function(fieldId, formId)
       self.field.val(self.field.intlTelInput("getNumber"));
     });
   };
+
+  this.addCountryCode = function()  {
+    var dialCode = this.field.intlTelInput("getSelectedCountryData").dialCode;
+
+    if (this.field.val()[0] != '+' && !!dialCode) {
+      this.field.val('+' + dialCode + this.field.val());
+    }
+  };
+
+  this.validationAddClasses = function(settings)  {
+    this.errorClass = settings.errorValidationAddClass;
+    this.successClass = settings.successValidationAddClass;
+    if (!this.onChangeSet) this.field.keyup(this.validationCallback()).change(this.validationCallback()).change();
+    this.onChangeSet = true;
+  };
+
+  this.validationCallback = function() {
+    var self = this;
+
+    return function(e) {
+      if (self.isValid()) {
+        if (!!self.errorClass) self.field.removeClass(self.errorClass);
+        if (!!self.successClass) self.field.addClass(self.successClass);
+        if (!!self.successCallback) self.successCallback(e);
+      } else {
+        if (!!self.successClass) self.field.removeClass(self.successClass);
+        if (!!self.errorClass) self.field.addClass(self.errorClass);
+        if (!!self.errorCallback) self.errorCallback(e);
+      }
+    }
+  };
+
+  this.validationCallbacks = function(settings) {
+    this.errorCallback = settings.errorValidationCallback;
+    this.successCallback = settings.successValidationCallback;
+    if (!this.onChangeSet) this.field.keyup(this.validationCallback()).change(this.validationCallback()).change();
+    this.onChangeSet = true;
+  };
 };
+
+
+/* <<<<<<<< PROTOTYPES >>>>>>>> */
 
 IntlTelInputWrapper.prototype.init = function(settings)  {
   if (!this.field || !this.field.length) return false;
@@ -23,14 +65,16 @@ IntlTelInputWrapper.prototype.init = function(settings)  {
     initialCountry: settings.initialCountry || ''
   });
 
-  if (this.field.val()[0] != '+' && settings.addCountryCode) {
-    this.field.val('+' + this.field.intlTelInput("getSelectedCountryData").dialCode + this.field.val());
-  }
-
+  this.onChangeSet = false;
+  if (!!settings.errorValidationAddClass || !!settings.successValidationAddClass) this.validationAddClasses(settings);
+  if (!!settings.errorValidationCallback || !!settings.successValidationCallback) this.validationCallbacks(settings);
+  if (settings.addCountryCode) this.addCountryCode();
   if (this.formId) this.formCallback();
 };
 
 IntlTelInputWrapper.prototype.initWithJQuery = function(field, settings) {
+  if (!field || !field.length) return false;
+
   this.field = field;
   this.init(settings);
 };
