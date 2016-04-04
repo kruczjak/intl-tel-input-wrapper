@@ -14,6 +14,7 @@ var IntlTelInputWrapper = window.IntlTelInputWrapper = function(fieldId, formId)
 };
 
 IntlTelInputWrapper.prototype.init = function(settings)  {
+  if (!!this.field || !this.field.length) return false;
   settings = settings || {};
 
   this.field.intlTelInput({
@@ -34,18 +35,18 @@ IntlTelInputWrapper.prototype.initWithJQuery = function(field, settings) {
   this.init(settings);
 };
 
-IntlTelInputWrapper.prototype.changeCountry = function(country_string)  {
-  if (!country_string) return;
+IntlTelInputWrapper.prototype.changeCountry = function(countryString)  {
+  if (!countryString) return;
 
-  if (country_string[0] <= '9' && country_string[0] >= '0') {
+  if (countryString[0] <= '9' && countryString[0] >= '0') {
     var country = $.grep(this.countryData, function (e) {
-      return e.dialCode == country_string;
+      return e.dialCode == countryString;
     })[0];
     if (typeof country === 'undefined') return;
-    country_string = country.iso2;
+    countryString = country.iso2;
   }
 
-  this.field.intlTelInput('setCountry', country_string);
+  this.field.intlTelInput('setCountry', countryString);
 };
 
 IntlTelInputWrapper.prototype.isValid = function()  {
