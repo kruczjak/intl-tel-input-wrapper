@@ -55,7 +55,8 @@ IntlTelInputWrapper.prototype.init = function(settings)  {
   this.field.intlTelInput({
     preferredCountries: settings.preferredCountries || ['no', 'se', 'dk', 'fi', 'ee'],
     dropdownContainer: settings.dropdownContainer || '',
-    initialCountry: settings.initialCountry || ''
+    initialCountry: settings.initialCountry || '',
+    separateDialCode: settings.separateDialCode || false
   });
 
   if (!!settings.errorValidationAddClass || !!settings.successValidationAddClass ||
