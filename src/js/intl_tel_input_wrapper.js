@@ -32,11 +32,11 @@ var IntlTelInputWrapper = window.IntlTelInputWrapper = function(fieldId, formId,
       if (self.isValid()) {
         if (!!self.errorClass) self.field.removeClass(self.errorClass);
         if (!!self.successClass) self.field.addClass(self.successClass);
-        if (!!self.successCallback) self.successCallback(e);
+        if (!!self.successCallback) self.successCallback(e, self);
       } else {
         if (!!self.successClass) self.field.removeClass(self.successClass);
         if (!!self.errorClass) self.field.addClass(self.errorClass);
-        if (!!self.errorCallback) self.errorCallback(e);
+        if (!!self.errorCallback) self.errorCallback(e, self);
       }
     }
   };

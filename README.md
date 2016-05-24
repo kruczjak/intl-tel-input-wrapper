@@ -32,7 +32,7 @@ wrapper.getField();
 new IntlTelInputWrapper('#msisdn_field').init({
   errorValidationAddClass: 'error-class', //adds 'error-class' to '#msisdn_field'
   successValidationAddClass: 'success-class', //adds 'success-class' to '#msisdn_field'
-  errorValidationCallback: function(e) {}, //calls function when validation error
-  successValidationCallback: function(e) {} //calls function when validation success
+  errorValidationCallback: function(e, this_object) {}, //calls function when validation error
+  successValidationCallback: function(e, this_object) {} //calls function when validation success
 });
 ```
