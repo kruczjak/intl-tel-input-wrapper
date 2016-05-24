@@ -1,14 +1,19 @@
-var IntlTelInputWrapper = window.IntlTelInputWrapper = function(fieldId, formId) {
+var IntlTelInputWrapper = window.IntlTelInputWrapper = function(fieldId, formId, formatedFieldId) {
   this.countryData = $.fn.intlTelInput.getCountryData();
   if (fieldId) this.field = $(fieldId);
   this.formId = formId;
+  this.formatedFieldId = formatedFieldId;
 
   this.formCallback = function()  {
     var self = this;
     this.form = $(formId);
 
     this.form.submit(function() {
-      self.field.val(self.field.intlTelInput("getNumber"));
+      if (!self.formatedFieldId) {
+        self.field.val(self.fullNumber(true));
+      } else {
+        $(self.formatedFieldId).val(self.fullNumber(true));
+      }
     });
   };
 
